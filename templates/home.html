@@ -1,14 +1,10 @@
 <!-- templates/home.html -->
-{% extends "base.html" %}
-{% block content %}
-<h1> Company Homepage </h1>
-<p> The current date and time is: {% now "DATETIME_FORMAT" %}</p>
-<p> There are {{ inventory_list|length }} items of inventory. </p>
-<ul>
-    {% for item in inventory_list %}
-        <li> {{ item }} </li>
-    {% endfor %}
-</ul>
-<p>{{ greeting| title }}</p>
-{% comment %} Add more content here {% endcomment %}
-{% endblock %}
+ {% extends "base.html" %}
+ {% block content %}
+ {% for post in posts %}
+ <div class="post-entry">
+    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+    <p>{{ post.body }}</p>
+ </div>
+ {% endfor %}
+ {% endblock content %}
